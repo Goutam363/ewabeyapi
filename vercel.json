@@ -17,8 +17,5 @@
     ],
     "env": {
         "ENV_FILE": ".env.stage.prod"
-      },
-    "alias": {
-      "api": "/api"
-    }
+      }
   }

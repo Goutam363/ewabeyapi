@@ -15,7 +15,7 @@ import { UpdateUserByStaffDto } from './dto/update-user-by-staff.dto';
 import { UpdateStaffByAdminDto } from './dto/update-staff-by-admin.dto';
 import { UpdateAdminByAdminDto } from './dto/update-admin-by-admin.dto';
 
-@Controller('auth')
+@Controller('api/auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 

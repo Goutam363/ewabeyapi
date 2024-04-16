@@ -13,7 +13,7 @@ import { UpdateProjectAdminDto } from './dto/update-project-admin.dto';
 import { UpdateProjectStaffDto } from './dto/update-project-staff.dto';
 import { ThrottlerGuard } from '@nestjs/throttler';
 
-@Controller('project')
+@Controller('api/project')
 export class ProjectController {
   constructor(
     private projectService: ProjectService,

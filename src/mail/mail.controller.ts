@@ -12,7 +12,7 @@ import { ContactUsDto } from './dto/contact-us.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { ThrottlerGuard } from '@nestjs/throttler';
 
-@Controller('mail')
+@Controller('api/mail')
 export class MailController {
   constructor(private readonly mailService: MailService) {}
 
