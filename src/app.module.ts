@@ -17,7 +17,7 @@ import { configValidationSchema } from './config.schema';
       validationSchema: configValidationSchema,
     }),
     ThrottlerModule.forRoot([{
-      ttl: 10000, //in miliseconds
+      ttl: 90000, //in miliseconds
       limit: 3,
     }]),
       TypeOrmModule.forRootAsync({

@@ -20,6 +20,7 @@ export class ProjectController {
   ) {}
 
   @Get('/test')
+  @UseGuards(ThrottlerGuard)
   testing(): Promise<string> {
     return Promise.resolve("Testing Successful!");
   }
