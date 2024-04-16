@@ -10,14 +10,12 @@ import {
 import { MailService } from './mail.service';
 import { ContactUsDto } from './dto/contact-us.dto';
 import { AuthGuard } from '@nestjs/passport';
-import { ThrottlerGuard } from '@nestjs/throttler';
 
 @Controller('api/mail')
 export class MailController {
   constructor(private readonly mailService: MailService) {}
 
   @Post('contact-us')
-  @UseGuards(ThrottlerGuard)
   async contactUs(@Body() contactUsDto: ContactUsDto): Promise<void> {
     try {
       await this.mailService.sendNewContactUsForm(contactUsDto);
@@ -27,7 +25,6 @@ export class MailController {
   }
 
   @Post('verify-email')
-  @UseGuards(ThrottlerGuard)
   async verifyEmail(@Body('email') email: string): Promise<{ msg: string }> {
     try {
       const msg = await this.mailService.sendOtp(email);
@@ -38,7 +35,6 @@ export class MailController {
   }
 
   @Post('/fg-usr/verify-email')
-  @UseGuards(ThrottlerGuard)
   async verifyEmailFgUsr(
     @Body('email') email: string,
   ): Promise<{ msg: string }> {
@@ -51,7 +47,6 @@ export class MailController {
   }
 
   @Post('/fg-psw/verify-email')
-  @UseGuards(ThrottlerGuard)
   async verifyEmailFgPsw(
     @Body('email') email: string,
   ): Promise<{ msg: string }> {
@@ -64,13 +59,11 @@ export class MailController {
   }
 
   @Post('/fg-usr/send-usrname')
-  @UseGuards(ThrottlerGuard)
   async sendUsernames(@Body('email') email: string): Promise<void> {
     await this.mailService.sendUsernames(email);
   }
 
   @Get('/fg-usr/send-usrname/:email')
-  @UseGuards(ThrottlerGuard)
   async getUsernames(@Param('email') email: string): Promise<string> {
     const usernames = await this.mailService.getUsernames(email);
     return usernames;

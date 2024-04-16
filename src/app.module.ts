@@ -5,7 +5,6 @@ import { AuthModule } from './auth/auth.module';
 import { MailModule } from './mail/mail.module';
 import { MobileModule } from './mobile/mobile.module';
 import { ContactModule } from './contact/contact.module';
-import { ThrottlerModule } from '@nestjs/throttler';
 import { FirebaseStorageModule } from './firebase-storage/firebase-storage.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { configValidationSchema } from './config.schema';
@@ -16,10 +15,6 @@ import { configValidationSchema } from './config.schema';
       envFilePath: [`.env.stage.${process.env.STAGE}`],
       validationSchema: configValidationSchema,
     }),
-    ThrottlerModule.forRoot([{
-      ttl: 90000, //in miliseconds
-      limit: 3,
-    }]),
       TypeOrmModule.forRootAsync({
         imports: [ConfigModule],
         inject: [ConfigService],

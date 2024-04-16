@@ -11,7 +11,6 @@ import { UpdateProjectStageDto } from './dto/update-project-stage.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { UpdateProjectAdminDto } from './dto/update-project-admin.dto';
 import { UpdateProjectStaffDto } from './dto/update-project-staff.dto';
-import { ThrottlerGuard } from '@nestjs/throttler';
 
 @Controller('api/project')
 export class ProjectController {
@@ -20,13 +19,12 @@ export class ProjectController {
   ) {}
 
   @Get('/test')
-  @UseGuards(ThrottlerGuard)
   testing(): Promise<string> {
     return Promise.resolve("Testing Successful!");
   }
 
   @Get()
-  @UseGuards(AuthGuard('user-jwt'), ThrottlerGuard)
+  @UseGuards(AuthGuard('user-jwt'))
   getProjects(
     @Query() filterDto: GetProjectsFilterDto,
     @GetUser() user: User,
@@ -35,7 +33,7 @@ export class ProjectController {
   }
 
   @Post()
-  @UseGuards(AuthGuard('user-jwt'), ThrottlerGuard)
+  @UseGuards(AuthGuard('user-jwt'))
   createProject(@Body() createProjectDto: CreateProjectDto, @GetUser() user: User): Promise<Project> {
     return this.projectService.createProject(createProjectDto, user);
   }
