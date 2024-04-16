@@ -3,7 +3,6 @@ import { ProjectStatus } from "../project-status.enum";
 import { ProjectStage } from "../project-stage.enum";
 
 export class UpdateProjectStaffDto {
-    @IsNotEmpty()
     project_details: string;
 
     payment_ids: string;

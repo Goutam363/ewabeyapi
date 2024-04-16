@@ -6,7 +6,6 @@ export class UpdateProjectAdminDto {
     @IsNotEmpty()
     project_name: string;
 
-    @IsNotEmpty()
     project_details: string;
 
     @IsNotEmpty()
