@@ -19,6 +19,11 @@ export class ProjectController {
     private projectService: ProjectService,
   ) {}
 
+  @Get('/test')
+  testing(): Promise<string> {
+    return Promise.resolve("Testing Successful!");
+  }
+
   @Get()
   @UseGuards(AuthGuard('user-jwt'), ThrottlerGuard)
   getProjects(
