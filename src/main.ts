@@ -6,7 +6,7 @@ import { TransformInterceptor } from './transform.interceptor';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    "origin": ["https://ewabey.com","https://ewabey-controls.netlify.app","http://localhost:3000"],
+    "origin": ["https://ewabey.com","https://controls.ewabey.com","https://ewabey-controls.netlify.app","http://localhost:3000"],
     "preflightContinue": false,
     "optionsSuccessStatus": 204
   });
